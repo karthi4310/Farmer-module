@@ -17,4 +17,12 @@ public class AddressDto {
 	private String district;
 	private String state;
 	private String pincode;
+    public void setVillage(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setVillage'");
+    }
+	public Object getVillage() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getVillage'");
+	}
 }

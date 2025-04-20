@@ -1,19 +1,27 @@
 package com.farmer.farmermanagement.service;
-
+ 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
+ 
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+ 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class OtpService {
-
+ 
     private final FirebaseAuth firebaseAuth;
-
+ 
+    // In-memory OTP store — ideally use Redis/Caffeine with expiry
+    private final Map<String, String> otpStore = new ConcurrentHashMap<>();
+ 
+    // Used only if you're doing Firebase ID token verification (not manual OTP)
     public boolean verifyOtp(String idToken) {
         try {
             FirebaseToken decodedToken = firebaseAuth.verifyIdToken(idToken);
@@ -24,7 +32,7 @@ public class OtpService {
             return false;
         }
     }
-
+ 
     public String getUserEmailOrPhoneFromToken(String idToken) {
         try {
             FirebaseToken decodedToken = firebaseAuth.verifyIdToken(idToken);
@@ -36,15 +44,43 @@ public class OtpService {
             return null;
         }
     }
-
+ 
+    // Method to generate and send OTP
     public String generateAndSendOtp(String phoneNumber) {
-        String otp = String.valueOf((int) (Math.random() * 1000000));
+        // Generate a random 6-digit OTP
+        String otp = String.format("%06d", new Random().nextInt(999999));
+       
+        // Store the OTP in the memory
+        otpStore.put(phoneNumber, otp);
+       
+        // Log the generated OTP for debugging
         log.info("Generated OTP for phone {}: {}", phoneNumber, otp);
+       
+        // Call the method to send OTP via Firebase or your chosen method
         sendOtpThroughServerSide(phoneNumber, otp);
+       
         return otp;
     }
-
+ 
+    // Method to verify OTP
+    public boolean verifyOtpCode(String phoneNumber, String otp) {
+        String storedOtp = otpStore.get(phoneNumber);
+        boolean isValid = storedOtp != null && storedOtp.equals(otp);
+ 
+        log.info("Verifying OTP for phone {}: provided={}, expected={}, result={}",
+                phoneNumber, otp, storedOtp, isValid);
+ 
+        if (isValid) {
+            otpStore.remove(phoneNumber); // OTP is single-use
+            log.info("OTP verified and removed from store for phone {}", phoneNumber);
+        }
+ 
+        return isValid;
+    }
+ 
+    // Simulate OTP sending (you need to implement the actual Firebase or SMS sending logic here)
     private void sendOtpThroughServerSide(String phoneNumber, String otp) {
+        // Simulate sending OTP
         log.info("OTP sent to phone {}: {}", phoneNumber, otp);
     }
 }

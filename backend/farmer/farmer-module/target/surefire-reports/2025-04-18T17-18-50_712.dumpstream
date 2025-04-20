@@ -1,0 +1,5 @@
+# Created at 2025-04-18T17:18:51.192
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Farmer Spring test\DATE--Spring-backend-farmer-backend\backend\farmer\farmer-module\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

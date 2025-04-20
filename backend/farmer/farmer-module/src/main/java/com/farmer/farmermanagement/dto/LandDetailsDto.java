@@ -26,4 +26,8 @@ public class LandDetailsDto {
 	private IrrigationSource irrigationSource;
 	private String borewellDischarge;
 	private String borewellLocation;
+    public void setareaInAcres(double d) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setareaInAcres'");
+    }
 }

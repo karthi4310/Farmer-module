@@ -51,4 +51,14 @@ public class CropDto {
 
 	@PositiveOrZero(message = "Net income cannot be negative")
 	private double netIncome;
+
+    public Object getSeason() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSeason'");
+    }
+
+    public void setSeason(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setSeason'");
+    }
 }

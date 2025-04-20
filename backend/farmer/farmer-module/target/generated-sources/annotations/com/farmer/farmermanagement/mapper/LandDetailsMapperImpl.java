@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-20T13:01:22+0530",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.42.0.z20250331-1358, environment: Java 21.0.6 (Eclipse Adoptium)"
+    date = "2025-04-20T16:07:11+0530",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.10 (Oracle Corporation)"
 )
 @Component
 public class LandDetailsMapperImpl implements LandDetailsMapper {
@@ -21,18 +21,18 @@ public class LandDetailsMapperImpl implements LandDetailsMapper {
 
         LandDetailsDto landDetailsDto = new LandDetailsDto();
 
-        landDetailsDto.setBorewellDischarge( landDetails.getBorewellDischarge() );
-        landDetailsDto.setBorewellLocation( landDetails.getBorewellLocation() );
-        landDetailsDto.setCropType( landDetails.getCropType() );
-        landDetailsDto.setGeoTag( landDetails.getGeoTag() );
         landDetailsDto.setId( landDetails.getId() );
-        landDetailsDto.setIrrigationSource( landDetails.getIrrigationSource() );
+        landDetailsDto.setSurveyNumber( landDetails.getSurveyNumber() );
         landDetailsDto.setLandSize( landDetails.getLandSize() );
-        landDetailsDto.setLatitude( landDetails.getLatitude() );
-        landDetailsDto.setLongitude( landDetails.getLongitude() );
+        landDetailsDto.setCropType( landDetails.getCropType() );
         landDetailsDto.setSoilTest( landDetails.getSoilTest() );
         landDetailsDto.setSoilTestCertificate( landDetails.getSoilTestCertificate() );
-        landDetailsDto.setSurveyNumber( landDetails.getSurveyNumber() );
+        landDetailsDto.setGeoTag( landDetails.getGeoTag() );
+        landDetailsDto.setLatitude( landDetails.getLatitude() );
+        landDetailsDto.setLongitude( landDetails.getLongitude() );
+        landDetailsDto.setIrrigationSource( landDetails.getIrrigationSource() );
+        landDetailsDto.setBorewellDischarge( landDetails.getBorewellDischarge() );
+        landDetailsDto.setBorewellLocation( landDetails.getBorewellLocation() );
 
         return landDetailsDto;
     }
@@ -45,18 +45,18 @@ public class LandDetailsMapperImpl implements LandDetailsMapper {
 
         LandDetails landDetails = new LandDetails();
 
-        landDetails.setBorewellDischarge( landDetailsDto.getBorewellDischarge() );
-        landDetails.setBorewellLocation( landDetailsDto.getBorewellLocation() );
-        landDetails.setCropType( landDetailsDto.getCropType() );
-        landDetails.setGeoTag( landDetailsDto.getGeoTag() );
         landDetails.setId( landDetailsDto.getId() );
-        landDetails.setIrrigationSource( landDetailsDto.getIrrigationSource() );
+        landDetails.setSurveyNumber( landDetailsDto.getSurveyNumber() );
         landDetails.setLandSize( landDetailsDto.getLandSize() );
-        landDetails.setLatitude( landDetailsDto.getLatitude() );
-        landDetails.setLongitude( landDetailsDto.getLongitude() );
+        landDetails.setCropType( landDetailsDto.getCropType() );
         landDetails.setSoilTest( landDetailsDto.getSoilTest() );
         landDetails.setSoilTestCertificate( landDetailsDto.getSoilTestCertificate() );
-        landDetails.setSurveyNumber( landDetailsDto.getSurveyNumber() );
+        landDetails.setGeoTag( landDetailsDto.getGeoTag() );
+        landDetails.setLatitude( landDetailsDto.getLatitude() );
+        landDetails.setLongitude( landDetailsDto.getLongitude() );
+        landDetails.setIrrigationSource( landDetailsDto.getIrrigationSource() );
+        landDetails.setBorewellDischarge( landDetailsDto.getBorewellDischarge() );
+        landDetails.setBorewellLocation( landDetailsDto.getBorewellLocation() );
 
         return landDetails;
     }
